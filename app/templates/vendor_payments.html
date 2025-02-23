@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HotelM - Vendor Payments</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        th {
+            background: #007BFF;
+            color: #fff;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background: #6c757d;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .back-link:hover {
+            background: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vendor Payments</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Payment ID</th>
+                <th>Payment Method</th>
+                <th>Status</th>
+                <th>Transaction Date</th>
+                <th>Amount</th>
+                <th>Booking ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{range .}}
+            <tr>
+                <td>{{.PaymentID}}</td>
+                <td>{{.PaymentMethod}}</td>
+                <td>{{.PaymentStatus}}</td>
+                <td>{{.TransactionDate.Format "2006-01-02"}}</td>
+                <td>{{printf "%.2f" .Amount}}</td>
+                <td>{{.BookingID}}</td>
+            </tr>
+            {{else}}
+            <tr>
+                <td colspan="6">No payments found.</td>
+            </tr>
+            {{end}}
+        </tbody>
+    </table>
+    <div style="text-align: center;">
+        <a class="back-link" href="/vendor">Back to Dashboard</a>
+    </div>
+</body>
+</html>

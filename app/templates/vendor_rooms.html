@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HotelM - Vendor Rooms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        th {
+            background: #007BFF;
+            color: #fff;
+        }
+        a.btn {
+            display: inline-block;
+            padding: 8px 12px;
+            margin: 3px;
+            background: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        a.btn.edit {
+            background: #ffc107;
+        }
+        a.btn.delete {
+            background: #dc3545;
+        }
+        a.btn:hover {
+            opacity: 0.9;
+        }
+        .top-links {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .top-links a {
+            margin: 0 10px;
+            padding: 10px 15px;
+            background: #6c757d;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .top-links a:hover {
+            background: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Rooms</h1>
+    <div class="top-links">
+        <a href="/vendor/rooms/new">Add New Room</a>
+        <a href="/vendor">Back to Dashboard</a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Room ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Location</th>
+                <th>Availability</th>
+                <th>Price</th>
+                <th>Room Type</th>
+                <th>Avg. Rating</th>
+                <th>Amenities</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{range .}}
+            <tr>
+                <td>{{.RoomID}}</td>
+                <td>{{.Name}}</td>
+                <td>{{.Description}}</td>
+                <td>{{.Location}}</td>
+                <td>{{if .Availability}}Yes{{else}}No{{end}}</td>
+                <td>{{printf "%.2f" .Price}}</td>
+                <td>{{.RoomType}}</td>
+                <td>{{printf "%.2f" .AverageRating}}</td>
+                <td>{{.Amenities}}</td>
+                <td>
+                    <a class="btn edit" href="/vendor/rooms/edit?room_id={{.RoomID}}">Edit</a>
+                    <form action="/vendor/rooms/delete" method="post" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this room?');">
+                        <input type="hidden" name="room_id" value="{{.RoomID}}">
+                        <button type="submit" class="btn delete" style="border:none;cursor:pointer;">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {{else}}
+            <tr>
+                <td colspan="10">No rooms found.</td>
+            </tr>
+            {{end}}
+        </tbody>
+    </table>
+</body>
+</html>

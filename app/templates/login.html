@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HotelM - Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        .login-container {
+            width: 300px;
+            margin: 80px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px #ccc;
+        }
+        .login-container h2 {
+            text-align: center;
+        }
+        .login-container form {
+            display: flex;
+            flex-direction: column;
+        }
+        .login-container label {
+            margin: 10px 0 5px;
+        }
+        .login-container input,
+        .login-container select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        .login-container button {
+            margin-top: 20px;
+            padding: 10px;
+            background: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            background: #0056b3;
+        }
+        .register-buttons {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .register-buttons a {
+            text-align: center;
+            text-decoration: none;
+            background: #007BFF;
+            color: #fff;
+            padding: 10px;
+            border-radius: 3px;
+            margin-top: 10px;
+        }
+        .register-buttons a:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>HotelM Login</h2>
+        <form action="/login" method="post">
+            <!-- Role selection: vendor or customer -->
+            <label for="role">Login as:</label>
+            <select name="role" id="role" required>
+                <option value="vendor">Vendor</option>
+                <option value="customer">Customer</option>
+            </select>
+            <!-- ID field -->
+            <label for="id">ID:</label>
+            <input type="number" id="id" name="id" required placeholder="Enter your ID">
+            <!-- Name field -->
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required placeholder="Enter your name">
+            <!-- Submit button -->
+            <button type="submit">Login</button>
+        </form>
+        <div class="register-buttons">
+            <a href="/register/customer">Register as Customer</a>
+            <a href="/register/vendor">Register as Vendor</a>
+        </div>
+    </div>
+</body>
+</html>

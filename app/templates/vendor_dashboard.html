@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HotelM - Vendor Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e9ecef;
+            margin: 0;
+            padding: 0;
+        }
+        .dashboard-container {
+            width: 600px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 25px;
+            background: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        .logout-btn {
+            margin-top: 20px;
+            background: #dc3545;
+        }
+        .logout-btn:hover {
+            background: #a71d2a;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>Vendor Dashboard</h1>
+        <p>Welcome! Please choose an option:</p>
+        <div>
+            <a href="/vendor/rooms" class="btn">Manage Rooms</a>
+            <a href="/vendor/payments" class="btn">View Payments</a>
+        </div>
+        <div>
+            <a href="/logout" class="btn logout-btn">Logout</a>
+        </div>
+    </div>
+</body>
+</html>

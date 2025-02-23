@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HotelM - Add New Room</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 500px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin: 10px 0 5px;
+        }
+        input, textarea, select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        textarea {
+            resize: vertical;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            background: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 15px;
+            display: block;
+            padding: 8px;
+            background: #6c757d;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .back-link:hover {
+            background: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add New Room</h1>
+        <form action="/vendor/rooms/new" method="post">
+            <label for="name">Room Name:</label>
+            <input type="text" id="name" name="name" required placeholder="Enter room name">
+            
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required placeholder="Enter room description"></textarea>
+            
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required placeholder="Enter room location">
+            
+            <label for="availability">Availability:</label>
+            <select id="availability" name="availability" required>
+                <option value="true">Available</option>
+                <option value="false">Not Available</option>
+            </select>
+            
+            <label for="price">Price:</label>
+            <input type="number" step="0.01" id="price" name="price" required placeholder="Enter price">
+            
+            <label for="room_type">Room Type:</label>
+            <input type="text" id="room_type" name="room_type" required placeholder="Enter room type">
+            
+            <label for="average_rating">Average Rating:</label>
+            <input type="number" step="0.01" id="average_rating" name="average_rating" value="0.0" readonly>
+            
+            <label for="amenities">Amenities (comma-separated):</label>
+            <input type="text" id="amenities" name="amenities" placeholder="WiFi,TV,Mini Bar">
+            
+            <button type="submit">Add Room</button>
+        </form>
+        <a class="back-link" href="/vendor/rooms">Back to Rooms</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HotelM - Available Rooms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e9ecef;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        th {
+            background: #007BFF;
+            color: #fff;
+        }
+        a.btn {
+            display: inline-block;
+            padding: 8px 12px;
+            margin: 5px;
+            background: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        a.btn:hover {
+            background: #218838;
+        }
+        .back-link {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 10px 15px;
+            background: #6c757d;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .back-link:hover {
+            background: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <h1>Available Rooms</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Price</th>
+                <th>Amenities</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{range .}}
+            <tr>
+                <td>{{.RoomID}}</td>
+                <td>{{.Name}}</td>
+                <td>{{.Location}}</td>
+                <td>{{printf "%.2f" .Price}}</td>
+                <td>{{.Amenities}}</td>
+                <td>
+                    <a class="btn" href="/customer/booking/new?room_id={{.RoomID}}">Book Now</a>
+                </td>
+            </tr>
+            {{else}}
+            <tr>
+                <td colspan="6">No available rooms found.</td>
+            </tr>
+            {{end}}
+        </tbody>
+    </table>
+    <div style="text-align:center;">
+        <a class="back-link" href="/customer">Back to Dashboard</a>
+    </div>
+</body>
+</html>
