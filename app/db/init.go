@@ -11,7 +11,7 @@ import (
 var DB *sql.DB
 
 func Connect() {
-	connStr := "host=localhost port=5434 user=postgres dbname=mydb password=234tinker sslmode=disable"
+	connStr := "host=localhost port=5434 user=postgres dbname=mydb sslmode=disable"
 	var err error
 
 	DB, err = sql.Open("postgres", connStr)
